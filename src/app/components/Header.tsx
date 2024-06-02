@@ -11,7 +11,7 @@ export default function Header() {
                     <nav>
                         <ul className="flex flex-row space-x-6">
                             <li><a href="#" className="hover:text-blue-500 text-xl">PROJECT</a></li>
-                            <li><a href="#" className="hover:text-blue-500 text-xl">MEMBERS</a></li>
+                            <li><a href="#" className="hover:text-blue-500 text-xl">MONITOR</a></li>
                         </ul>
                     </nav>
                 </div>
