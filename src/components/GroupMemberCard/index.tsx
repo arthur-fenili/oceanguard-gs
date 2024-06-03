@@ -7,7 +7,7 @@ export default function GroupMemberCard(props: MemberCardProps) {
     return (
         <div className="flex flex-col items-center justify-center p-7 m-3 hover:bg-blue-800 rounded-md hover:translate-y-2">
             <div className='pb-5'>
-                <Link href={props.linkedin}>
+                <Link href={props.linkedin} target='blank'>
                     <Image src={props.photo} alt={props.name} width={200} height={200} className="rounded-full" />
                 </Link>
             </div>
