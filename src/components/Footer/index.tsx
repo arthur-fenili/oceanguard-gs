@@ -1,5 +1,4 @@
-import Image from 'next/image';
-import GroupMemberCard from './GroupMemberCard';
+import GroupMemberCard from '../GroupMemberCard';
 
 export default function Footer() {
     return (
