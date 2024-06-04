@@ -2,7 +2,7 @@ import GroupMemberCard from '../GroupMemberCard';
 
 export default function Footer() {
     return (
-        <footer className="bg-blue-600 flex flex-col items-center mt-8">
+        <footer className="bg-blue-600 flex flex-col items-center">
             <h1 className="text-white text-2xl m-9">GROUP MEMBERS</h1>
             <div className='flex flex-row'>
                 <GroupMemberCard name="ARTHUR FENILI" 
@@ -21,7 +21,7 @@ export default function Footer() {
                     email='vinicioraphael2012@gmail.com'
                     linkedin='https://www.linkedin.com/in/vin%C3%ADcio-raphael-santana/'/>
             </div>
-            <p className='m-4 text-blue-200'>Todos os direitos reservados. OceanGuard &copy; 2024</p>
+            <p className='m-4 text-blue-200'>OceanGuard &copy; 2024. Todos os direitos reservados.</p>
         </footer>
     );
 }
