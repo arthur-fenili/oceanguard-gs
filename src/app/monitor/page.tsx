@@ -26,7 +26,7 @@ export default function Monitor() {
                     Acompanhe a localização em tempo real dos coletores de lixo da CleanSea.
                 </p>
                 <div className="border-2 border-blue-100 rounded-xl shadow-2xl bg-blue-50 p-4 w-full overflow-hidden">
-                    <LoadScript googleMapsApiKey="AIzaSyCHSeboKdLskpPuIX3jWooB44gXCb0KLSk">
+                    <LoadScript googleMapsApiKey="YOUR-API-KEY-HERE">
                         <GoogleMap
                             mapContainerStyle={containerStyle}
                             center={center}
