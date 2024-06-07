@@ -1,6 +1,8 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import axios from 'axios';
 
 const containerStyle = {
     width: '100%',
@@ -12,12 +14,22 @@ const center = {
     lng: -46.016817
 };
 
-const markers = [
-    { lat: -23.854373, lng: -46.016817 },
-    { lat: -23.045547, lng: -43.097200 },
-];
-
 export default function Monitor() {
+    const [markers, setMarkers] = useState<{ lat: number; lng: number; }[]>([]);
+
+    useEffect(() => {
+        async function fetchMarkers() {
+            try {
+                const response = await axios.get('http://localhost:8088/coletores');
+                setMarkers(response.data);
+            } catch (error) {
+                console.error('Erro ao buscar coletores:', error);
+            }
+        }
+
+        fetchMarkers();
+    }, []);
+
     return (
         <div className="flex flex-col items-center justify-center bg-[#f5f0e1] py-8 px-4">
             <div className="max-w-5xl w-full">
@@ -26,14 +38,15 @@ export default function Monitor() {
                     Acompanhe a localização em tempo real dos coletores de lixo da CleanSea.
                 </p>
                 <div className="border-2 border-blue-100 rounded-xl shadow-2xl bg-blue-50 p-4 w-full overflow-hidden">
-                    <LoadScript googleMapsApiKey="YOUR-API-KEY-HERE">
+
+                    <LoadScript googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}>
                         <GoogleMap
                             mapContainerStyle={containerStyle}
                             center={center}
                             zoom={10}
                         >
                             {markers.map((marker, index) => (
-                                <Marker key={index} position={marker} />
+                                <Marker key={index} position={{ lat: marker.lat, lng: marker.lng }} />
                             ))}
                         </GoogleMap>
                     </LoadScript>
