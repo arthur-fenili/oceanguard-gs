@@ -30,6 +30,12 @@ export default function Monitor() {
         fetchMarkers();
     }, []);
 
+    const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
+    if (!apiKey) {
+        console.error("Google Maps API key não está definida nas variáveis de ambiente.");
+        return <p>Error: Google Maps API key não está definida</p>;
+    }
+
     return (
         <div className="flex flex-col items-center justify-center bg-[#f5f0e1] py-8 px-4">
             <div className="max-w-5xl w-full">
@@ -39,7 +45,7 @@ export default function Monitor() {
                 </p>
                 <div className="border-2 border-blue-100 rounded-xl shadow-2xl bg-blue-50 p-4 w-full overflow-hidden">
 
-                    <LoadScript googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}>
+                    <LoadScript googleMapsApiKey={apiKey}>                  
                         <GoogleMap
                             mapContainerStyle={containerStyle}
                             center={center}
